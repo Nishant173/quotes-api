@@ -1,0 +1,12 @@
+https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.update_one
+https://docs.mongodb.com/manual/reference/method/db.collection.count/
+https://stackoverflow.com/questions/30605638/why-does-upsert-a-record-using-update-one-raise-valueerror
+https://www.youtube.com/watch?v=rE_bJl2GAY8
+https://www.youtube.com/watch?v=GMppyAPbLYk
+https://www.geeksforgeeks.org/python-measure-similarity-between-two-sentences-using-cosine-similarity/
+https://medium.com/@adriensieg/text-similarities-da019229c894
+https://kinsta.com/blog/http-status-codes/
+https://www.restapitutorial.com/httpstatuscodes.html
+https://www.youtube.com/watch?v=hAEJajltHxc
+https://restfulapi.net/http-methods/
+https://stackoverflow.com/questions/2342579/http-status-code-for-update-and-delete
