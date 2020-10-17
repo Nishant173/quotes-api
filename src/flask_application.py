@@ -71,4 +71,4 @@ def get_similar_quotes():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
