@@ -65,8 +65,8 @@ def update_quote_rating():
 @app.route(rule='/quotes/similar_quotes', methods=['GET'])
 def get_similar_quotes():
     quote = request.args['quote']
-    top = request.args['top']
-    similar_quotes = filters.get_similar_quotes(quote=quote, top=int(top))
+    top = int(request.args['top'])
+    similar_quotes = filters.get_similar_quotes(quote=quote, top=top)
     return jsonify(similar_quotes), 200
 
 
