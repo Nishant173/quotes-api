@@ -12,7 +12,7 @@ def generate_random_id():
 
 def get_collection_object(collection_name):
     """Returns object of the collection instance from the MongoDB database"""
-    cluster = MongoClient(f"mongodb+srv://{config.MONGODB_USERNAME}:{config.MONGODB_PASSWORD}@cluster0.079f2.mongodb.net/{config.MONGODB_DB_NAME}?retryWrites=true&w=majority")
+    cluster = MongoClient(config.MONGODB_CONNECTION_URI)
     db = cluster[config.MONGODB_DB_NAME]
     collection_obj = db[collection_name]
     return collection_obj
