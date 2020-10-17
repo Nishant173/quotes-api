@@ -23,7 +23,7 @@ def get_all_posts_from_mongodb(collection_name):
     all_posts = list(collection.find({}))
     return all_posts
 
-def delete_posts_from_mongodb(collection_name):
+def delete_all_posts_from_mongodb(collection_name):
     """Deletes all posts from a collection in the MongoDB database"""
     collection = get_collection_object(collection_name=collection_name)
     collection.delete_many({})

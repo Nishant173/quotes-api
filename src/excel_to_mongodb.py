@@ -36,6 +36,6 @@ def add_excel_posts_to_mongodb(collection_name):
 
 if __name__ == "__main__":
     # Deleting posts from same collection before adding from Excel sheet, just in case
-    utils.delete_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
+    utils.delete_all_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
     add_excel_posts_to_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
     print("Successfully added posts from Excel spreadsheet to MongoDB database!")
