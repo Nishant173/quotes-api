@@ -26,7 +26,7 @@ def filtered_quotes(filter_by):
         return jsonify(filters.get_unrated_posts())
     if filter_by == "recommended":
         return jsonify(filters.get_recommended_posts())
-    return jsonify([])
+    raise ValueError("Invalid endpoint. Expected one of ['quotes/rated', 'quotes/unrated', 'quotes/recommended']")
 
 
 @app.route(rule='/quote', methods=['GET'])
