@@ -13,7 +13,7 @@ def home():
 
 @app.route(rule='/quotes/all', methods=['GET'])
 def all_quotes():
-    return jsonify(utils.get_all_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_NAME))
+    return jsonify(utils.get_all_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES))
 
 
 @app.route(rule='/quotes/<string:filter_by>', methods=['GET'])
@@ -39,8 +39,7 @@ def get_quote_by_id():
 @app.route(rule='/quote/add', methods=['GET', 'POST'])
 def add_quote():
     quote_to_add = request.args['quote']
-    crud_ops.add_quote(quote=quote_to_add,
-                       collection_name=config.MONGODB_COLLECTION_NAME)
+    crud_ops.add_quote(quote=quote_to_add)
     response = {"message": "Quote was added successfully", "status_code": 201}
     return jsonify(response), 201
 
@@ -48,8 +47,7 @@ def add_quote():
 @app.route(rule='/quote/delete', methods=['GET'])
 def delete_quote():
     quote_id = request.args['_id']
-    crud_ops.delete_quote(quote_id=quote_id,
-                          collection_name=config.MONGODB_COLLECTION_NAME)
+    crud_ops.delete_quote(quote_id=quote_id)
     response = {"message": "Quote was deleted successfully", "status_code": 200}
     return jsonify(response), 200
 
@@ -59,8 +57,7 @@ def update_quote_rating():
     quote_id = request.args['_id']
     new_rating = float(request.args['new_rating'])
     crud_ops.update_quote_rating(quote_id=quote_id,
-                                 new_rating=new_rating,
-                                 collection_name=config.MONGODB_COLLECTION_NAME)
+                                 new_rating=new_rating)
     response = {"message": "Quote rating was updated successfully", "status_code": 200}
     return jsonify(response), 200
 

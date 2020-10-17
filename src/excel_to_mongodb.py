@@ -13,7 +13,7 @@ def get_list_of_excel_posts():
     NOTE: Adds an additional "_id" (will be unique field) key in each dictionary.
     """
     posts = []
-    df = read_excel_data(filepath=config.EXCEL_FILEPATH)
+    df = read_excel_data(filepath=config.EXCEL_DATASET_FILEPATH)
     for tuple_obj in df.itertuples():
         post = {
             "_id": utils.generate_random_id(),
@@ -36,6 +36,6 @@ def add_excel_posts_to_mongodb(collection_name):
 
 if __name__ == "__main__":
     # Deleting posts from same collection before adding from Excel sheet, just in case
-    utils.delete_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_NAME)
-    add_excel_posts_to_mongodb(collection_name=config.MONGODB_COLLECTION_NAME)
+    utils.delete_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
+    add_excel_posts_to_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
     print("Successfully added posts from Excel spreadsheet to MongoDB database!")

@@ -1,9 +1,10 @@
 import numpy as np
+import config
 import utils
 
-def add_quote(quote, collection_name):
+def add_quote(quote):
     """Adds one quote to a collection in the MongoDB database"""
-    collection = utils.get_collection_object(collection_name=collection_name)
+    collection = utils.get_collection_object(collection_name=config.MONGODB_COLLECTION_QUOTES)
     obj_to_add = {
         "_id": utils.generate_random_id(),
         "id": "",
@@ -16,15 +17,15 @@ def add_quote(quote, collection_name):
     collection.insert_one(obj_to_add)
     return None
 
-def delete_quote(quote_id, collection_name):
+def delete_quote(quote_id):
     """Deletes one quote from a collection (based on _id) in the MongoDB database"""
-    collection = utils.get_collection_object(collection_name=collection_name)
+    collection = utils.get_collection_object(collection_name=config.MONGODB_COLLECTION_QUOTES)
     collection.delete_one({"_id": quote_id})
     return None
 
-def update_quote_rating(quote_id, new_rating, collection_name):
+def update_quote_rating(quote_id, new_rating):
     """Updates rating of one quote from a collection in the MongoDB database"""
-    collection = utils.get_collection_object(collection_name=collection_name)
+    collection = utils.get_collection_object(collection_name=config.MONGODB_COLLECTION_QUOTES)
     collection.update_one(filter={"_id": quote_id},
                           update={"$set": {"rating": new_rating}})
     return None
