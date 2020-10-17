@@ -31,13 +31,13 @@ def get_recommended_posts():
     return df_recommended_posts.to_dict(orient='records')
 
 def get_similar_quotes(quote, top):
-    """Gets list of most similar quotes available"""
-    all_posts_with_similarities = []
-    all_posts = utils.get_all_posts_from_mongodb(collection_name=config.MONGODB_COLLECTION_QUOTES)
-    for post in all_posts:
+    """Gets list of most similar quotes available (from recommended quotes collection)"""
+    recommended_posts_with_similarities = []
+    recommended_posts = get_recommended_posts()
+    for post in recommended_posts:
         post['cosineSimilarity'] = get_cosine_similarity(sentence1=quote, sentence2=post['quote'])
-        all_posts_with_similarities.append(post)
-    df_similarities = pd.DataFrame(data=all_posts_with_similarities)
+        recommended_posts_with_similarities.append(post)
+    df_similarities = pd.DataFrame(data=recommended_posts_with_similarities)
     df_similarities.sort_values(by='cosineSimilarity', ascending=False, ignore_index=True, inplace=True)
     df_similarities = df_similarities.head(top)
     return df_similarities.to_dict(orient='records')
